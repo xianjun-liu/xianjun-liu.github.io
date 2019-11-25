@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android常用图片加载框架 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android中图片加载有很多，目前有四大流行的框架，Glide，ImageLoader，Picasso和Fresco，在使用的过程中也是按这个顺序来使用的，下面一次介绍各个框架的使用。 GlideGlide在代码中的使用 Glide.with(context).load(imageUrl).into(iamgeview);怎么样，是不是很简单，一行代码就搞定了，如果需要更多功能可参考一下链接Gl">
+<meta name="keywords" content="图片加载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android常用图片加载框架">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2016&#x2F;03&#x2F;09&#x2F;Android%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Android中图片加载有很多，目前有四大流行的框架，Glide，ImageLoader，Picasso和Fresco，在使用的过程中也是按这个顺序来使用的，下面一次介绍各个框架的使用。 GlideGlide在代码中的使用 Glide.with(context).load(imageUrl).into(iamgeview);怎么样，是不是很简单，一行代码就搞定了，如果需要更多功能可参考一下链接Gl">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-03-09T13:12:40.000Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android常用图片加载框架" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/09/Android%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time datetime="2016-03-09T11:27:01.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android常用图片加载框架
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android中图片加载有很多，目前有四大流行的框架，<a href="https://github.com/bumptech/glide" target="_blank" rel="noopener">Glide</a>，<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="noopener">ImageLoader</a>，<a href="https://github.com/square/picasso" target="_blank" rel="noopener">Picasso</a>和<a href="https://github.com/facebook/fresco" target="_blank" rel="noopener">Fresco</a>，在使用的过程中也是按这个顺序来使用的，下面一次介绍各个框架的使用。</p>
+<h2 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h2><p>Glide在代码中的使用</p>
+<pre><code>Glide.with(context).load(imageUrl).into(iamgeview);</code></pre><p>怎么样，是不是很简单，一行代码就搞定了，如果需要更多功能可参考一下链接<br><a href="http://blog.csdn.net/shangmingchao/article/details/51125554/" target="_blank" rel="noopener">Glide使用详解1</a>     <a href="http://blog.csdn.net/shangmingchao/article/details/51172972" target="_blank" rel="noopener">Glide使用详解2</a>    <a href="http://www.jianshu.com/p/423b780d551a?utm_campaign=hugo&utm_medium=reader_share&utm_content=note&utm_source=qq" target="_blank" rel="noopener">Glide下载图片</a></p>
+<h2 id="ImageLoader"><a href="#ImageLoader" class="headerlink" title="ImageLoader"></a>ImageLoader</h2><p>ImageLoader在使用时需要进行配置，要配置的东西比较多，这里就不一一说明，具体使用可参考下面的链接。</p>
+<p>下面简单分析一下，ImageLoader框架的加载原理：</p>
+<ol>
+<li><p>ImageLoader图片加载器，对外的主要 API，采取了单例模式，用于图片的加载和显示。</p>
+</li>
+<li><p>MemoryCache图片内存换成。默认使用了 LRU 算法。 LRU: Least Recently Used 近期最少使用算法, 选用了基于链表结构的 LinkedHashMap 作为存储结构。假设情景：内存缓存设置的阈值只够存储两个 bitmap 对象，当 put 第三个 bitmap 对象时，将近期最少使用的 bitmap 对象移除。</p>
+</li>
+<li><p>DiskCache图片磁盘缓存，默认使用LruDiskCache算法，在缓存满时删除最近最少使用的图片；缓存目录下名为journal的文件记录缓存的所有操作</p>
+</li>
+<li><p>图片加载流程</p>
+<ol>
+<li><p>判断图片的内存缓存是否存在，若存在直接执行步骤 8；</p>
+</li>
+<li><p>判断图片的磁盘缓存是否存在，若存在直接执行步骤 5；</p>
+</li>
+<li><p>ImageDownloader从网络上下载图片；</p>
+</li>
+<li><p>将图片缓存在磁盘上；</p>
+</li>
+<li><p>ImageDecoder将图片 decode 成 bitmap 对象；</p>
+</li>
+<li><p>BitmapProcessor根据DisplayImageOptions配置对图片进行预处理(Pre-process Bitmap)；</p>
+</li>
+<li><p>将 bitmap 对象缓存到内存中；</p>
+</li>
+<li><p>根据DisplayImageOptions配置对图片进行后处理(Post-process Bitmap)；</p>
+</li>
+<li><p>执行DisplayBitmapTask将图片显示在相应的控件上。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><a href="http://blog.csdn.net/xiaanming/article/details/26810303/" target="_blank" rel="noopener">ImageLoader使用详解1</a>  <a href="http://blog.csdn.net/xiaanming/article/details/27525741" target="_blank" rel="noopener">ImageLoader使用详解2</a></p>
+<h2 id="Picasso"><a href="#Picasso" class="headerlink" title="Picasso"></a>Picasso</h2><p>使用一句话：</p>
+<pre><code>Picasso.with(this).load(&quot;url&quot;).placeholder(R.mipmap.ic_default).into(imageView);</code></pre><p>Glide和Picasso的差异</p>
+<ul>
+<li>Glide 默认的 Bitmap 格式是 RGB_565 格式，而 Picasso 默认的是 ARGB_8888 格式，这个内存开销要小一半。</li>
+<li>在磁盘缓存方面，Picasso 只会缓存原始尺寸的图片，而 Glide 缓存的是多种规格，也就意味着 Glide 会根据你 ImageView 的大小来缓存相应大小的图片尺寸，比如你 ImageView 大小是200*200，原图是 400*400 ，而使用 Glide 就会缓存 200*200 规格的图，而 Picasso 只会缓存 400*400 规格的。这个改进就会导致 Glide 比 Picasso 加载的速度要快，毕竟少了每次裁剪重新渲染的过程。</li>
+<li>最重要的一个特性是 Glide 支持加载 Gif 动态图，而 Picasso 不支持该特性。</li>
+</ul>
+<p>总体来说，Glide 是在 Picasso 基础之上进行的二次开发，各个方面做了不少改进，不过这也导致他的包比 Picasso 大不少，不过也就不到 500k，Picasso 是100多k，方法数也比 Picasso 多不少，不过毕竟级别还是蛮小的，影响不是很大。</p>
+<h2 id="Fresco"><a href="#Fresco" class="headerlink" title="Fresco"></a>Fresco</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><a href="http://www.jianshu.com/p/3ac30878c72c" target="_blank" rel="noopener">四大框架总结</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/09/Android%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6/" data-id="ck3dv92ju00007k49h8618zn5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" rel="tag">图片加载</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/BottomNavigationBar%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BottomNavigationBar使用中的一个坑
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-UI/" rel="tag">android UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-textview-%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/" rel="tag">android textview 两端对齐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" rel="tag">图片加载</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android-UI/" style="font-size: 10px;">android UI</a> <a href="/tags/android-textview-%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/" style="font-size: 10px;">android textview 两端对齐</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 10px;">图片加载</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/">热修复原理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/Handler%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/">Handler通信机制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/">事件分发</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/20/MacDown%E8%AF%AD%E6%B3%95/">MacDown语法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
