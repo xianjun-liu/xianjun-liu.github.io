@@ -300,6 +300,8 @@
           
   <div class="comments" id="comments">
     
+      <div id="gitalk-container"></div>
+    
   </div>
 
 
@@ -525,6 +527,23 @@
 
 
 
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '5e848edda897e965ba8c',
+          clientSecret: '904674f2033c7ccd4e378aa0e4a26c74776bd9d9',
+          repo: 'xianjun-liu.github.io',
+          owner: 'xianjun-liu',
+          admin: ['liuxianjun_13@163.com'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
