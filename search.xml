@@ -109,22 +109,6 @@ new Thread(futureTask).start();</code></pre></li>
 ]]></content>
   </entry>
   <entry>
-    <title>简述热修复原理</title>
-    <url>/2017/11/01/%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h2 id="热修复原理"><a href="#热修复原理" class="headerlink" title="热修复原理"></a>热修复原理</h2><p>Android中有两个主要的Classloader，PathClassLoader和DexClassLoader，它们都继承自BaseDexClassLoader，这两个类加载器的主要区别是：Android系统通过PathClassLoader来加载系统类和主dex中的类。而DexClassLoader则可用于加载指定路径的apk、jar或dex文件。上述两个类都是继承自BaseDexClassLoader<br>BaseDexClassLoader 的构造函数中创建一个DexPathList实例，DexPathList的构造函数会创建一个dexElements 数组,BaseDexClassLoader 在findclass方法中调用了pathList.findClass，这个方法中会遍历dexpathlist中的dexElements数组，然后初始化DexFile，如果DexFile不为空那么调用DexFile类loadClassBinaryName方法返回Class实例。简言之，ClassLoader会遍历dexelements,然后加载这个数组中的dex文件. ClassLoader在加载到正确的类之后就会停止加载此类,因此我们将包含正确的类的Dex文件中插入在dexElements数组前面就可以完成对问题类的修复</p>
-<h3 id="diff算法的主要流程"><a href="#diff算法的主要流程" class="headerlink" title="diff算法的主要流程"></a>diff算法的主要流程</h3><p>   对于dex文件中的每项Section，遍历其每一项Item，进行新数据与旧数据的对比（新旧数据的对比方法是oldItem.compareTo(newItem)，结果小于0记为DEL，大于0记为ADD），记录在哪些位置需要ADD一个值，哪些位置需要DEL一个值，并把这些操作项存放于patchOperationList中。按照图中的例子，就是删除位置2的数据，在位置5添加f。为了减少存储的数据，Tinker中会遍历patchOperationList，将同一个位置既有DEL标识又有ADD标识的情况，替换为REPLACE标识，最后将ADD，DEL，REPLACE标识数据分别记录到各自的List中最后将操作记录列表写入补丁patch.dex中生成patch.dex后，进行下一步是将patch下发到客户端后合成全量的dex，合成dex这部分内容此处不再展开说，是差量过程的反过程</p>
-<p><strong>Tinker进行热修复的流程为：</strong></p>
-<ol>
-<li>新dex与旧dex通过dex差分算法生成差异包 patch.dex</li>
-<li>将patch dex下发到客户端，客户端将patch dex与旧dex合成为新的全量dex</li>
-<li>将合成后的全量dex 插入到dex elements前面(此部分和QQ空间机制类似)，完成修复</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>android tinker 热修复</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一行代码解决TextView 不等字数两端对齐问题</title>
     <url>/2017/11/01/Textview%E4%B8%A4%E7%AB%AF%E5%AF%B9%E9%BD%90/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>先附上一张图<br><img src="/Users/liuxianjun/Documents/tmp25e6a1a7.png" alt="图片"><br>　　上面的图片相信大家都很熟悉，项目中经常会遇到这种需求，我看到它的第一感觉这不就是一个TextView嘛？很简单啊！可当我写布局的时候怎么做到文字两端对齐，这可就难倒我了，我首先想到Google应该给TextView设置了这样的属性，我找了一下然而并没有，要么就自己写一个控件来实现这个效果，然而怎么写就犯难了，后来我想到SpannableStringBuilder可以给TextView设置很多不同的效果，给SpannableStringBuilder设置不同的Span就可以达到我们想要的效果，经过一番努力后终于找到了，言归正传我们开始今天的话题。</p>
@@ -146,6 +130,22 @@ new Thread(futureTask).start();</code></pre></li>
 ]]></content>
       <tags>
         <tag>android textview 两端对齐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简述热修复原理</title>
+    <url>/2017/11/01/%E7%83%AD%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h2 id="热修复原理"><a href="#热修复原理" class="headerlink" title="热修复原理"></a>热修复原理</h2><p>Android中有两个主要的Classloader，PathClassLoader和DexClassLoader，它们都继承自BaseDexClassLoader，这两个类加载器的主要区别是：Android系统通过PathClassLoader来加载系统类和主dex中的类。而DexClassLoader则可用于加载指定路径的apk、jar或dex文件。上述两个类都是继承自BaseDexClassLoader<br>BaseDexClassLoader 的构造函数中创建一个DexPathList实例，DexPathList的构造函数会创建一个dexElements 数组,BaseDexClassLoader 在findclass方法中调用了pathList.findClass，这个方法中会遍历dexpathlist中的dexElements数组，然后初始化DexFile，如果DexFile不为空那么调用DexFile类loadClassBinaryName方法返回Class实例。简言之，ClassLoader会遍历dexelements,然后加载这个数组中的dex文件. ClassLoader在加载到正确的类之后就会停止加载此类,因此我们将包含正确的类的Dex文件中插入在dexElements数组前面就可以完成对问题类的修复</p>
+<h3 id="diff算法的主要流程"><a href="#diff算法的主要流程" class="headerlink" title="diff算法的主要流程"></a>diff算法的主要流程</h3><p>   对于dex文件中的每项Section，遍历其每一项Item，进行新数据与旧数据的对比（新旧数据的对比方法是oldItem.compareTo(newItem)，结果小于0记为DEL，大于0记为ADD），记录在哪些位置需要ADD一个值，哪些位置需要DEL一个值，并把这些操作项存放于patchOperationList中。按照图中的例子，就是删除位置2的数据，在位置5添加f。为了减少存储的数据，Tinker中会遍历patchOperationList，将同一个位置既有DEL标识又有ADD标识的情况，替换为REPLACE标识，最后将ADD，DEL，REPLACE标识数据分别记录到各自的List中最后将操作记录列表写入补丁patch.dex中生成patch.dex后，进行下一步是将patch下发到客户端后合成全量的dex，合成dex这部分内容此处不再展开说，是差量过程的反过程</p>
+<p><strong>Tinker进行热修复的流程为：</strong></p>
+<ol>
+<li>新dex与旧dex通过dex差分算法生成差异包 patch.dex</li>
+<li>将patch dex下发到客户端，客户端将patch dex与旧dex合成为新的全量dex</li>
+<li>将合成后的全量dex 插入到dex elements前面(此部分和QQ空间机制类似)，完成修复</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>android tinker 热修复</tag>
       </tags>
   </entry>
   <entry>
